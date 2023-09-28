@@ -1,0 +1,43 @@
+<style>
+        body{
+            background-image: url('https://t4.ftcdn.net/jpg/03/09/73/63/360_F_309736398_u31wYLpEXr8mX4t7FqZ1d0EyomwCvxUf.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+        a{
+        text-align: center;
+        display: block;
+        color: oceanblue;
+        }
+        a:link {
+            color: black;
+            background-color: transparent;
+            text-decoration: none;
+        }
+        #cardstyle{
+
+
+        .card {
+            margin-right: auto;
+            margin-left: auto;
+            width: 250px;
+            box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+            height: 300px;
+            border-radius: 5px;
+            backdrop-filter: blur(50px);
+            background-color: ;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .card img {
+            height: 60%;
+        }
+        .tab-space {
+            margin-center: 20px;
+        }
+
+        }
+       </style>

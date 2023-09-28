@@ -1,0 +1,90 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<style>
+    .tab-space {
+        margin-right: 20px;
+    }
+    .movie-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column; /* Place items in a column */
+    }
+    .movie-image {
+        width: 200px; /* Set the width as per your preference */
+        height: 300px; /* Set the height as per your preference */
+        object-fit: cover; /* Maintain aspect ratio and crop as needed */
+        margin-top: 10px; /* Add some space between the YouTube player and the image */
+    }
+    .youtube-player {
+        flex: 1; /* To occupy equal space with the image */
+    }
+    .rating-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .movie-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px; /* Add margin between the movie image and details */
+    }
+    .release-year, .description {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        text-align: center;
+        margin-bottom: 5px;
+        word-wrap: break-word; /* To wrap long content */
+    }
+    .movie-name {
+        height: 50px; /* Set a fixed height for the movie name heading */
+        width: 100%; /* Allow the name box to fill the available width */
+        overflow: ellipsis; /* Hide any overflowing text */
+        text-overflow: ellipsis; /* Show ellipsis (...) for long names */
+        white-space: nowrap; /* Prevent line breaks */
+        font-size: 100%;
+    }
+</style>
+
+<div class="container mt-5" align="center">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        {% for movie in movies %}
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body" align="center">
+                                    <img src="{{ movie.image }}" alt="{{ movie.name }}" class="img-fluid tab-space movie-image" width="200" height="300">
+                                    <b class="movie-name"><a href="{% url 'main:details' movie.id %}" class="text-center">{{ movie.name }}</a></b>
+
+                                    <div class="rating-container">
+                                        <b>Rating:  {{movie.rating}} </b>
+                                    </div>
+                                    <div class="movie-details">
+                                        <div class="release-year">
+                                            <p><b>Release Year: {{ movie.release_date|date:'Y' }}</b></p>
+                                        </div>
+                                        <div class="description">
+                                            <p>{{ movie.description|truncatechars:100 }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
